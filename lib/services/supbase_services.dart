@@ -17,4 +17,14 @@ class SupbaseServices {
   Future insertFood(Food food) async {
     await supabase.from('food_tb').insert(food.toJson());
   }
+
+//แก้ไขข้อมูล
+  Future UpdaFood(String id, Food food) async {
+    await supabase.from('food_tb').update(food.toJson()).eq('id', id);
+  }
+
+//ลบข้อมูล
+  Future deleteFood(String id) async {
+    await supabase.from('food_tb').delete().eq('id', id);
+  }
 }

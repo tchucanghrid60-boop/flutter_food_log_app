@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_food_log_app/models/food.dart';
 import 'package:flutter_food_log_app/view/add_food_ui.dart';
 import 'package:flutter_food_log_app/services/supbase_services.dart';
+import 'package:flutter_food_log_app/view/update_del_food_ui.dart';
 
 class ShowAllFoodUi extends StatefulWidget {
   const ShowAllFoodUi({super.key});
@@ -77,7 +78,19 @@ class _ShowAllFoodUiState extends State<ShowAllFoodUi> {
                       bottom: 5,
                     ),
                     child: ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => UpdateDelFoodUi(
+                              food: foods[index],
+                            ),
+                          ),
+                        ).then((velue) {
+                          loadAllFood();
+                        });
+                        ;
+                      },
                       leading: Image.asset(
                         'assets/images/food_img.png',
                       ),
